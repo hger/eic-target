@@ -1,6 +1,5 @@
 defaultNamespace: fleet-local
 
-# Fleet will now automatically deploy this to ANY cluster with this label
 targetCustomizations:
   - name: dynamic-downstream-targets
     clusterSelector:

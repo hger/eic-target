@@ -1,11 +1,9 @@
-# Target definition for the Helm Chart
 targetCustomizations:
   - name: dynamic-downstream-targets
     clusterSelector:
       matchLabels:
         environment: downstream-target
 
-# Helm chart details
 helm:
   repo: https://metallb.github.io/metallb
   chart: metallb
@@ -16,7 +14,6 @@ helm:
   valuesFiles:
     - values.yaml
 
-# ⬇️ UPDATE THIS SECTION TO TARGET THE CRD OBJECT DIRECTLY ⬇️
 diff:
   comparePatches:
     - apiVersion: apiextensions.k8s.io/v1
