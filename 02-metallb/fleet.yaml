@@ -1,9 +1,9 @@
-# Fleet will now automatically deploy MetalLB to ANY cluster with this label
+# Target definition for the Helm Chart
 targetCustomizations:
   - name: dynamic-downstream-targets
     clusterSelector:
       matchLabels:
-        environment: eic-target
+        environment: downstream-target
 
 # Helm chart details
 helm:
@@ -15,3 +15,12 @@ helm:
   createNamespace: true
   valuesFiles:
     - values.yaml
+
+# ⬇️ ADD THIS SECTION TO FIX THE "MODIFIED" DRIFT ⬇️
+diff:
+  comparePatches:
+    - apiVersion: metallb.io/v1beta1  # Verify if your version is v1beta1 or v1beta2 based on your CRD
+      kind: BGPPeer
+      operations:
+        - {"op": "remove", "path": "/status"}
+        - {"op": "remove", "path": "/metadata/annotations"}
