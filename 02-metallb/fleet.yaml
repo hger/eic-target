@@ -1,0 +1,17 @@
+# Fleet will now automatically deploy MetalLB to ANY cluster with this label
+targetCustomizations:
+  - name: dynamic-downstream-targets
+    clusterSelector:
+      matchLabels:
+        environment: eic-target
+
+# Helm chart details
+helm:
+  repo: https://metallb.github.io/metallb
+  chart: metallb
+  version: 0.14.8
+  releaseName: metallb
+  namespace: metallb-system
+  createNamespace: true
+  valuesFiles:
+    - values.yaml

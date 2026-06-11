@@ -1,0 +1,13 @@
+# Custom provisioning for MetalLB CRDs (IPAddressPool and L2Advertisement)
+# This uses the Helm chart's built-in ability to deploy these objects automatically post-install
+ipAddressPools:
+  - name: default-pool
+    spec:
+      addresses:
+        - 192.168.1.200-192.168.1.250 # <-- Change to your actual network pool
+
+l2Advertisements:
+  - name: default-l2
+    spec:
+      ipAddressPools:
+        - default-pool
