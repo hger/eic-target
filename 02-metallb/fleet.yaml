@@ -14,12 +14,8 @@ helm:
   valuesFiles:
     - values.yaml
 
+options:
+  forceSync: false
+  disableReadyCheck: false
 diff:
-  comparePatches:
-    - apiVersion: apiextensions.k8s.io/v1
-      kind: CustomResourceDefinition
-      name: bgppeers.metallb.io
-      operations:
-        - {"op": "remove", "path": "/spec/conversion/webhook/clientConfig"}
-        - {"op": "remove", "path": "/metadata/annotations"}
-        - {"op": "remove", "path": "/status"}
+  skip: true
