@@ -1,6 +1,6 @@
 systemctl stop rke2-server
 
-/opt/rke2/bin/rke2 certificate rotate --server
+/opt/rke2/bin/rke2 certificate rotate
 
 systemctl start rke2-server
 
