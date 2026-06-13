@@ -13,3 +13,7 @@ kubectl set env deployment/kube-controller-manager -n kube-system POD_EVICTION_T
 "node-monitor-grace-period=15s",
 
 "pod-eviction-timeout=15s"
+
+kubectl get pods -n default | grep noonelikesyou
+
+kubectl delete pod <STUCK-POD-NAME> -n default --force --grace-period=0
