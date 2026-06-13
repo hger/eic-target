@@ -9,3 +9,7 @@ model: host-passthrough
 kubectl set env deployment/kube-controller-manager -n kube-system NODE_MONITOR_GRACE_PERIOD=15s
 
 kubectl set env deployment/kube-controller-manager -n kube-system POD_EVICTION_TIMEOUT=15s
+
+"node-monitor-grace-period=15s",
+
+"pod-eviction-timeout=15s"
