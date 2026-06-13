@@ -1,5 +1,6 @@
-kubectl get lease -n kube-system cp-kube-vip-lease -o jsonpath='{.spec.holderIdentity}'
-
-kubectl get pods -n kube-system -l app.kubernetes.io/name=kube-vip --field-selector spec.nodeName=<TARGET-NODE-NAME>
-
-kubectl delete pod <KUBE-VIP-POD-NAME> -n kube-system
+systemctl stop rke2-server
+/opt/rke2/bin/rke2 certificate rotate --server
+systemctl start rke2-server
+model: host-passthrough
+kubectl set env deployment/kube-controller-manager -n kube-system NODE_MONITOR_GRACE_PERIOD=15s
+kubectl set env deployment/kube-controller-manager -n kube-system POD_EVICTION_TIMEOUT=15s
