@@ -10,6 +10,8 @@ kubectl set env deployment/kube-controller-manager -n kube-system NODE_MONITOR_G
 
 kubectl set env deployment/kube-controller-manager -n kube-system POD_EVICTION_TIMEOUT=15s
 
+vi /etc/rancher/rke2/config.yaml.d/50-rancher.yaml
+
 "node-monitor-grace-period=15s",
 
 "pod-eviction-timeout=15s"
