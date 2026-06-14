@@ -6,7 +6,7 @@ systemctl start rke2-server
 
 model: host-passthrough
 
-kubectl get configmap -n harvester-system kubevirt-io-vmi-management-lock -o jsonpath='{ .data.cp }'
+kubectl -n kube-system get svc ingress-expose -o jsonpath='{.metadata.annotations.kube-vip\.io/vipHost}'
 
 vi /etc/rancher/rke2/config.yaml.d/50-rancher.yaml
 
