@@ -6,7 +6,7 @@ systemctl start rke2-server
 
 model: host-passthrough
 
-kubectl logs -n kube-system daemonset/kube-vip --tail=100 | grep -i "is the leader"
+kubectl get configmap -n harvester-system kubevirt-io-vmi-management-lock -o jsonpath='{ .data.cp }'
 
 vi /etc/rancher/rke2/config.yaml.d/50-rancher.yaml
 
