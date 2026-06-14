@@ -6,7 +6,7 @@ systemctl start rke2-server
 
 model: host-passthrough
 
-ip addr show | grep -E "inet .* secondary"
+kubectl logs -n kube-system daemonset/kube-vip --tail=100 | grep -i "is the leader"
 
 vi /etc/rancher/rke2/config.yaml.d/50-rancher.yaml
 
