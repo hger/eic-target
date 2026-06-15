@@ -8,11 +8,13 @@ model: host-passthrough
 
 vi /etc/rancher/rke2/config.yaml.d/50-rancher.yaml
 
+ip address show mgmt-br
+
 "node-monitor-grace-period=15s",
 
 "pod-eviction-timeout=15s"
 
-kubectl get pods -n default | grep noonelikesyou
+kubectl get pods -n default
 
 kubectl delete pod <STUCK-POD-NAME> -n default --force --grace-period=0
 
