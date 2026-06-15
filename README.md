@@ -6,8 +6,6 @@ systemctl start rke2-server
 
 model: host-passthrough
 
-kubectl -n kube-system get svc ingress-expose -o jsonpath='{.metadata.annotations.kube-vip\.io/vipHost}'
-
 vi /etc/rancher/rke2/config.yaml.d/50-rancher.yaml
 
 "node-monitor-grace-period=15s",
@@ -17,3 +15,16 @@ vi /etc/rancher/rke2/config.yaml.d/50-rancher.yaml
 kubectl get pods -n default | grep noonelikesyou
 
 kubectl delete pod <STUCK-POD-NAME> -n default --force --grace-period=0
+
+spec:
+  template:
+    spec:
+      tolerations:
+      - key: "node.kubernetes.io/unreachable"
+        operator: "Exists"
+        effect: "NoExecute"
+        tolerationSeconds: 10
+      - key: "node.kubernetes.io/not-ready"
+        operator: "Exists"
+        effect: "NoExecute"
+        tolerationSeconds: 10
