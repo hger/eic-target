@@ -8,10 +8,6 @@ model: host-passthrough
 
 ip address show mgmt-br
 
-https://releases.rancher.com/harvester/v1.6.1/version.yaml
-
-kubectl annotate upgrade.harvesterhci.io -n harvester-system hvst-upgrade-gvw6f upgrade.harvesterhci.io/reconcile-at=$(date +%s) --overwrite
-
 spec:
   template:
     spec:
