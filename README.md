@@ -6,8 +6,6 @@ systemctl start rke2-server
 
 model: host-passthrough
 
-kubectl patch upgrade.harvesterhci.io hvst-upgrade-vtrm6 -n harvester-system --type=merge -p '{"status":{"nodeStatuses":{"harvester-02":{"state":"Upgrading"}}}}'
-
 ip address show mgmt-br
 
 "node-monitor-grace-period=15s",
