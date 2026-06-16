@@ -6,7 +6,7 @@ systemctl start rke2-server
 
 model: host-passthrough
 
-vi /etc/rancher/rke2/config.yaml.d/50-rancher.yaml
+kubectl patch upgrade.harvesterhci.io hvst-upgrade-vtrm6 -n harvester-system --type=json -p='[{"op": "replace", "path": "/status/conditions", "value": [{"type": "SystemServicesUpgraded", "status": "True", "lastUpdateTime": "2026-06-16T08:00:00Z"}]}]'
 
 ip address show mgmt-br
 
