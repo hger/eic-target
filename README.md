@@ -10,9 +10,9 @@ ip address show mgmt-br
 
 https://releases.rancher.com/harvester/v1.6.1/version.yaml
 
-kubectl get pods -n default
+UPGRADE_NAME=$(kubectl -n harvester-system get upgrades -l harvesterhci.io/latestUpgrade=true -o jsonpath='{.items[0].metadata.name}')
 
-kubectl delete pod <STUCK-POD-NAME> -n default --force --grace-period=0
+kubectl annotate upgrade -n harvester-system $UPGRADE_NAME upgrade.harvesterhci.io/reconcile-at=$(date +%s) --overwrite
 
 spec:
   template:
