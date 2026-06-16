@@ -8,9 +8,7 @@ model: host-passthrough
 
 ip address show mgmt-br
 
-"node-monitor-grace-period=15s",
-
-"pod-eviction-timeout=15s"
+https://releases.rancher.com/harvester/v1.6.1/version.yaml
 
 kubectl get pods -n default
 
