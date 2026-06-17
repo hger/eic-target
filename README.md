@@ -2,9 +2,13 @@ systemctl stop rke2-server
 
 /opt/rke2/bin/rke2 certificate rotate
 
-systemctl start rke2-server
+systemctl start rke2-server 
 
 model: host-passthrough
+
+instance-label on the badcompany machine, bad: company
+
+virtual machine sceduling all namespaces, Topology Key: kubernetes.io/hostname and Anti-affinity label bad: company
 
 kubectl get virtualmachineinstancemigrations -n default -o custom-columns=NAME:.metadata.name,STATUS:.status.phase,AGE:.metadata.creationTimestamp
 
