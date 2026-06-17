@@ -18,15 +18,6 @@ virtual machine sceduling all namespaces, Topology Key: kubernetes.io/hostname a
 
 kubectl get pod -n default -l kubevirt.io/vm=slesvm-longhorn -o jsonpath='{.items[*].metadata.finalizers}'
 
-try these if and when same issue again
-
-kubectl get events -A --field-selector reason=FailedAttachVolume --watch
-
-kubectl get volumeattachments
-
-kubectl describe volumeattachment <ATTACHMENT_NAME>
-
-kubectl get node harvester-01 -o jsonpath='{.status.volumesInUse}' | jq
 
 kubectl get vmi slesvm-longhorn -o jsonpath='{.status.conditions}' | jq
 
