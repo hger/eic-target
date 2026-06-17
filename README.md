@@ -6,7 +6,7 @@ systemctl start rke2-server
 
 model: host-passthrough
 
-kubectl get virtualmachineinstancemigrations -n default
+kubectl get virtualmachineinstancemigrations -n default -o custom-columns=NAME:.metadata.name,STATUS:.status.phase,AGE:.metadata.creationTimestamp
 
 kubectl describe virtualmachineinstancemigration migration-name -n default | sed -n '/Events:/,$p'
 
