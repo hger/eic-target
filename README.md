@@ -8,7 +8,7 @@ model: host-passthrough
 
 kubectl get virtualmachineinstancemigrations -n default
 
-kubectl describe virtualmachineinstancemigration <migration-name> -n default | sed -n '/Events:/,$p'
+kubectl describe virtualmachineinstancemigration migration-name -n default | sed -n '/Events:/,$p'
 
 ip address show mgmt-br
 
