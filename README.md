@@ -19,8 +19,12 @@ kubectl get virtualmachineinstancemigrations -n default -o custom-columns=NAME:.
 kubectl describe virtualmachineinstancemigration migration-name -n default | sed -n '/Events:/,$p'
 
 kube-controller-manager-extra-arg:
-  - "node-monitor-grace-period=10s"
-  - "pod-eviction-timeout=10s"
+     - "node-monitor-grace-period=10s"
+     - "node-monitor-period=2s"
+     - "pod-eviction-timeout=10s"
+
+kubelet-arg:
+     - "node-status-update-frequency=4s"
 
 ip address show mgmt-br
 
