@@ -6,9 +6,7 @@ systemctl start rke2-server
 
 model: host-passthrough
 
-kubectl patch setting.longhorn.io pod-deletion-policy-when-node-is-down -n longhorn-system --type merge -p '{"value":"delete-pod-and-volume-attachment-immediately"}'
-
-kubectl get setting.longhorn.io pod-deletion-policy-when-node-is-down -n longhorn-system
+kubectl patch setting.longhorn.io node-down-pod-deletion-policy -n longhorn-system --type merge -p '{"value":"delete-pod-and-volume-attachment-immediately"}'
 
 instance-label on the badcompany machine, bad: company
 
