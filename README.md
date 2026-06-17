@@ -10,6 +10,12 @@ kubectl patch setting.longhorn.io node-down-pod-deletion-policy -n longhorn-syst
 
 kubectl get setting.longhorn.io node-down-pod-deletion-policy -n longhorn-system
 
+kube-controller-manager-arg:
+
+  - "node-monitor-grace-period=10s"
+
+  - "pod-eviction-timeout=10s"
+
 instance-label on the badcompany machine, bad: company
 
 virtual machine sceduling all namespaces, Topology Key: kubernetes.io/hostname and Anti-affinity label bad: company
