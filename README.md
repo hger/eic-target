@@ -16,6 +16,20 @@ instance-label on the badcompany machine, bad: company
 
 virtual machine sceduling all namespaces, Topology Key: kubernetes.io/hostname and Anti-affinity label bad: company
 
+kubectl get pod -n default -l kubevirt.io/vm=slesvm-longhorn -o jsonpath='{.items[*].metadata.finalizers}'
+
+try these if and when same issue again
+
+kubectl get volumeattachments
+
+kubectl describe volumeattachment <ATTACHMENT_NAME>
+
+kubectl get events -n kube-system --field-selector reason=VolumeResizeFailed -w
+# Or look globally for attachment blocks:
+kubectl get events --all-namespaces --field-selector reason=FailedAttachVolume
+
+kubectl get vmi slesvm-longhorn -o jsonpath='{.status.conditions}' | jq
+
 kubectl get virtualmachineinstancemigrations -n default -o custom-columns=NAME:.metadata.name,STATUS:.status.phase,AGE:.metadata.creationTimestamp
 
 kubectl describe virtualmachineinstancemigration migration-name -n default | sed -n '/Events:/,$p'
