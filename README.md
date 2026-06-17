@@ -6,7 +6,9 @@ systemctl start rke2-server
 
 model: host-passthrough
 
-kubectl port-forward --address 192.168.1.60 svc/longhorn-frontend -n longhorn-system 8080:80
+kubectl patch setting.longhorn.io pod-deletion-policy-when-node-is-down -n longhorn-system --type merge -p '{"value":"delete-pod-and-volume-attachment-immediately"}'
+
+kubectl get setting.longhorn.io pod-deletion-policy-when-node-is-down -n longhorn-system
 
 instance-label on the badcompany machine, bad: company
 
