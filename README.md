@@ -6,6 +6,8 @@ systemctl start rke2-server
 
 model: host-passthrough
 
+kubectl get virtualmachineinstancemigrations -n default
+
 ip address show mgmt-br
 
 spec:
