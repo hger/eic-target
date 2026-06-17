@@ -10,12 +10,6 @@ kubectl patch setting.longhorn.io node-down-pod-deletion-policy -n longhorn-syst
 
 kubectl get setting.longhorn.io node-down-pod-deletion-policy -n longhorn-system
 
-kube-controller-manager-arg:
-
-  - "node-monitor-grace-period=10s"
-
-  - "pod-eviction-timeout=10s"
-
 instance-label on the badcompany machine, bad: company
 
 virtual machine sceduling all namespaces, Topology Key: kubernetes.io/hostname and Anti-affinity label bad: company
@@ -23,12 +17,6 @@ virtual machine sceduling all namespaces, Topology Key: kubernetes.io/hostname a
 kubectl get virtualmachineinstancemigrations -n default -o custom-columns=NAME:.metadata.name,STATUS:.status.phase,AGE:.metadata.creationTimestamp
 
 kubectl describe virtualmachineinstancemigration migration-name -n default | sed -n '/Events:/,$p'
-
-cat /etc/rancher/rke2/config.yaml.d/99-eviction-timers.yaml
-
-kube-controller-manager-arg:
-  - "node-monitor-grace-period=10s"
-  - "pod-eviction-timeout=10s"
 
 ip address show mgmt-br
 
