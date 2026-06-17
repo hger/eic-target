@@ -8,18 +8,9 @@ model: host-passthrough
 evictionStrategy: None
 terminationGracePeriodSeconds: 10
 
-kubectl patch setting.longhorn.io node-down-pod-deletion-policy -n longhorn-system --type merge -p '{"value":"delete-both-statefulset-and-deployment-pod"}'
-
-kubectl get setting.longhorn.io node-down-pod-deletion-policy -n longhorn-system
-
 instance-label on the badcompany machine, bad: company
 
 virtual machine sceduling all namespaces, Topology Key: kubernetes.io/hostname and Anti-affinity label bad: company
-
-kubectl get pod -n default -l kubevirt.io/vm=slesvm-longhorn -o jsonpath='{.items[*].metadata.finalizers}'
-
-
-kubectl get vmi slesvm-longhorn -o jsonpath='{.status.conditions}' | jq
 
 kubectl get virtualmachineinstancemigrations -n default -o custom-columns=NAME:.metadata.name,STATUS:.status.phase,AGE:.metadata.creationTimestamp
 
