@@ -6,7 +6,7 @@ systemctl start rke2-server
 
 model: host-passthrough
 
-kubectl port-forward svc/longhorn-frontend -n longhorn-system 8080:80
+kubectl port-forward --address 0.0.0.0 svc/longhorn-frontend -n longhorn-system 8080:80
 
 instance-label on the badcompany machine, bad: company
 
