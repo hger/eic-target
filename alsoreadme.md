@@ -1,21 +1,16 @@
-ester-01:~ # kubectl get vmi -A
-NAMESPACE   NAME              AGE    PHASE     IP              NODENAME       READY
-default     badcompany        3m3s   Running   192.168.1.100   harvester-01   True
-default     mynewvm           3m3s   Running   192.168.1.103   harvester-01   True
-default     slesvm-longhorn   3m3s   Running   10.52.2.70      harvester-03   False
-harvester-01:~ # kubectl describe vmi slesvm-longhorn
+harvester-02:~ # kubectl describe vmi slesvm-longhorn
 Name:         slesvm-longhorn
 Namespace:    default
 Labels:       harvesterhci.io/vmName=slesvm-longhorn
-              kubevirt.io/nodeName=harvester-03
+              kubevirt.io/nodeName=harvester-01
 Annotations:  harvesterhci.io/sshNames: []
               kubevirt.io/latest-observed-api-version: v1
               kubevirt.io/storage-observed-api-version: v1
-              kubevirt.io/vm-generation: 19
+              kubevirt.io/vm-generation: 22
 API Version:  kubevirt.io/v1
 Kind:         VirtualMachineInstance
 Metadata:
-  Creation Timestamp:  2026-06-17T13:10:00Z
+  Creation Timestamp:  2026-06-17T13:24:19Z
   Finalizers:
     kubevirt.io/virtualMachineControllerFinalize
     foregroundDeleteVirtualMachine
@@ -28,8 +23,8 @@ Metadata:
     Kind:                  VirtualMachine
     Name:                  slesvm-longhorn
     UID:                   d7a2d0cc-6dd3-41de-bff7-fcea88db58fe
-  Resource Version:        42023990
-  UID:                     72ec6033-b6b9-4ad5-badd-07330d922eb7
+  Resource Version:        42043284
+  UID:                     855e6beb-320e-4c8a-9a2d-874832432a80
 Spec:
   Affinity:
     Pod Affinity:
@@ -89,7 +84,7 @@ Spec:
   Networks:
     Name:  default
     Pod:
-  Termination Grace Period Seconds:  120
+  Termination Grace Period Seconds:  10
   Tolerations:
     Effect:              NoExecute
     Key:                 node.kubernetes.io/unreachable
@@ -111,10 +106,10 @@ Spec:
     Name:      cloudinitdisk
 Status:
   Active Pods:
-    5a2a90a8-4d79-42be-9fd4-798aef07343b:  harvester-03
+    5ff892b2-1e10-43a2-ac83-a057aeca3ef2:  harvester-01
   Conditions:
-    Last Probe Time:       2026-06-17T13:12:38Z
-    Last Transition Time:  2026-06-17T13:12:38Z
+    Last Probe Time:       2026-06-17T13:33:22Z
+    Last Transition Time:  2026-06-17T13:33:22Z
     Message:               virt-launcher pod is terminating
     Reason:                PodTerminating
     Status:                False
@@ -127,7 +122,7 @@ Status:
     Last Transition Time:  <nil>
     Status:                True
     Type:                  StorageLiveMigratable
-    Last Probe Time:       2026-06-17T13:10:42Z
+    Last Probe Time:       2026-06-17T13:24:56Z
     Last Transition Time:  <nil>
     Status:                True
     Type:                  AgentConnected
@@ -147,9 +142,9 @@ Status:
   Interfaces:
     Info Source:     domain, guest-agent
     Interface Name:  eth0
-    Ip Address:      10.52.2.70
+    Ip Address:      10.52.0.244
     Ip Addresses:
-      10.52.2.70
+      10.52.0.244
     Mac:                             ca:1d:63:b2:80:ea
     Name:                            default
     Queue Count:                     1
@@ -162,21 +157,21 @@ Status:
     Guest Requested:    4Gi
   Migration Method:     BlockMigration
   Migration Transport:  Unix
-  Node Name:            harvester-03
+  Node Name:            harvester-01
   Phase:                Running
   Phase Transition Timestamps:
     Phase:                        Pending
-    Phase Transition Timestamp:   2026-06-17T13:10:00Z
+    Phase Transition Timestamp:   2026-06-17T13:24:19Z
     Phase:                        Scheduling
-    Phase Transition Timestamp:   2026-06-17T13:10:00Z
+    Phase Transition Timestamp:   2026-06-17T13:24:19Z
     Phase:                        Scheduled
-    Phase Transition Timestamp:   2026-06-17T13:10:19Z
+    Phase Transition Timestamp:   2026-06-17T13:24:31Z
     Phase:                        Running
-    Phase Transition Timestamp:   2026-06-17T13:10:21Z
+    Phase Transition Timestamp:   2026-06-17T13:24:34Z
   Qos Class:                      Burstable
   Runtime User:                   107
   Selinux Context:                none
-  Virtual Machine Revision Name:  revision-start-vm-d7a2d0cc-6dd3-41de-bff7-fcea88db58fe-19
+  Virtual Machine Revision Name:  revision-start-vm-d7a2d0cc-6dd3-41de-bff7-fcea88db58fe-22
   Volume Status:
     Name:    cloudinitdisk
     Size:    1048576
@@ -196,6 +191,6 @@ Status:
 Events:
   Type    Reason            Age    From                       Message
   ----    ------            ----   ----                       -------
-  Normal  SuccessfulCreate  3m25s  virtualmachine-controller  Created virtual machine pod virt-launcher-slesvm-longhorn-2wc27
-  Normal  Created           3m4s   virt-handler               VirtualMachineInstance defined.
-  Normal  Started           3m4s   virt-handler               VirtualMachineInstance started.
+  Normal  SuccessfulCreate  10m    virtualmachine-controller  Created virtual machine pod virt-launcher-slesvm-longhorn-zvwtz
+  Normal  Created           9m50s  virt-handler               VirtualMachineInstance defined.
+  Normal  Started           9m50s  virt-handler               VirtualMachineInstance started.
