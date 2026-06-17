@@ -2,7 +2,7 @@ harvester-02:~ # kubectl describe vmi slesvm-longhorn
 Name:         slesvm-longhorn
 Namespace:    default
 Labels:       harvesterhci.io/vmName=slesvm-longhorn
-              kubevirt.io/nodeName=harvester-01
+              kubevirt.io/nodeName=harvester-02
 Annotations:  harvesterhci.io/sshNames: []
               kubevirt.io/latest-observed-api-version: v1
               kubevirt.io/storage-observed-api-version: v1
@@ -10,12 +10,12 @@ Annotations:  harvesterhci.io/sshNames: []
 API Version:  kubevirt.io/v1
 Kind:         VirtualMachineInstance
 Metadata:
-  Creation Timestamp:  2026-06-17T13:24:19Z
+  Creation Timestamp:  2026-06-17T13:39:06Z
   Finalizers:
     kubevirt.io/virtualMachineControllerFinalize
     foregroundDeleteVirtualMachine
     wrangler.cattle.io/harvester-lb-vmi-controller
-  Generation:  13
+  Generation:  12
   Owner References:
     API Version:           kubevirt.io/v1
     Block Owner Deletion:  true
@@ -23,8 +23,8 @@ Metadata:
     Kind:                  VirtualMachine
     Name:                  slesvm-longhorn
     UID:                   d7a2d0cc-6dd3-41de-bff7-fcea88db58fe
-  Resource Version:        42043284
-  UID:                     855e6beb-320e-4c8a-9a2d-874832432a80
+  Resource Version:        42048437
+  UID:                     3cfa3af6-c6ed-4db6-a4c2-1e5374683f84
 Spec:
   Affinity:
     Pod Affinity:
@@ -106,13 +106,11 @@ Spec:
     Name:      cloudinitdisk
 Status:
   Active Pods:
-    5ff892b2-1e10-43a2-ac83-a057aeca3ef2:  harvester-01
+    fc5c0222-faaf-4e23-8f7c-33204d7fda84:  harvester-02
   Conditions:
-    Last Probe Time:       2026-06-17T13:33:22Z
-    Last Transition Time:  2026-06-17T13:33:22Z
-    Message:               virt-launcher pod is terminating
-    Reason:                PodTerminating
-    Status:                False
+    Last Probe Time:       <nil>
+    Last Transition Time:  2026-06-17T13:39:18Z
+    Status:                True
     Type:                  Ready
     Last Probe Time:       <nil>
     Last Transition Time:  <nil>
@@ -122,7 +120,7 @@ Status:
     Last Transition Time:  <nil>
     Status:                True
     Type:                  StorageLiveMigratable
-    Last Probe Time:       2026-06-17T13:24:56Z
+    Last Probe Time:       2026-06-17T13:39:38Z
     Last Transition Time:  <nil>
     Status:                True
     Type:                  AgentConnected
@@ -142,9 +140,9 @@ Status:
   Interfaces:
     Info Source:     domain, guest-agent
     Interface Name:  eth0
-    Ip Address:      10.52.0.244
+    Ip Address:      10.52.1.157
     Ip Addresses:
-      10.52.0.244
+      10.52.1.157
     Mac:                             ca:1d:63:b2:80:ea
     Name:                            default
     Queue Count:                     1
@@ -157,17 +155,17 @@ Status:
     Guest Requested:    4Gi
   Migration Method:     BlockMigration
   Migration Transport:  Unix
-  Node Name:            harvester-01
+  Node Name:            harvester-02
   Phase:                Running
   Phase Transition Timestamps:
     Phase:                        Pending
-    Phase Transition Timestamp:   2026-06-17T13:24:19Z
+    Phase Transition Timestamp:   2026-06-17T13:39:06Z
     Phase:                        Scheduling
-    Phase Transition Timestamp:   2026-06-17T13:24:19Z
+    Phase Transition Timestamp:   2026-06-17T13:39:06Z
     Phase:                        Scheduled
-    Phase Transition Timestamp:   2026-06-17T13:24:31Z
+    Phase Transition Timestamp:   2026-06-17T13:39:18Z
     Phase:                        Running
-    Phase Transition Timestamp:   2026-06-17T13:24:34Z
+    Phase Transition Timestamp:   2026-06-17T13:39:20Z
   Qos Class:                      Burstable
   Runtime User:                   107
   Selinux Context:                none
@@ -191,6 +189,6 @@ Status:
 Events:
   Type    Reason            Age    From                       Message
   ----    ------            ----   ----                       -------
-  Normal  SuccessfulCreate  10m    virtualmachine-controller  Created virtual machine pod virt-launcher-slesvm-longhorn-zvwtz
-  Normal  Created           9m50s  virt-handler               VirtualMachineInstance defined.
-  Normal  Started           9m50s  virt-handler               VirtualMachineInstance started.
+  Normal  SuccessfulCreate  5m10s  virtualmachine-controller  Created virtual machine pod virt-launcher-slesvm-longhorn-mtn7q
+  Normal  Created           4m56s  virt-handler               VirtualMachineInstance defined.
+  Normal  Started           4m56s  virt-handler               VirtualMachineInstance started.
