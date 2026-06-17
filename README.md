@@ -5,6 +5,8 @@ systemctl stop rke2-server
 systemctl start rke2-server 
 
 model: host-passthrough
+evictionStrategy: None
+terminationGracePeriodSeconds: 10
 
 kubectl patch setting.longhorn.io node-down-pod-deletion-policy -n longhorn-system --type merge -p '{"value":"delete-both-statefulset-and-deployment-pod"}'
 
