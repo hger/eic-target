@@ -20,13 +20,13 @@ kubectl get pod -n default -l kubevirt.io/vm=slesvm-longhorn -o jsonpath='{.item
 
 try these if and when same issue again
 
+kubectl get events -A --field-selector reason=FailedAttachVolume --watch
+
 kubectl get volumeattachments
 
 kubectl describe volumeattachment <ATTACHMENT_NAME>
 
-kubectl get events -n kube-system --field-selector reason=VolumeResizeFailed -w
-# Or look globally for attachment blocks:
-kubectl get events --all-namespaces --field-selector reason=FailedAttachVolume
+kubectl get node harvester-01 -o jsonpath='{.status.volumesInUse}' | jq
 
 kubectl get vmi slesvm-longhorn -o jsonpath='{.status.conditions}' | jq
 
