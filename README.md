@@ -6,7 +6,7 @@ systemctl start rke2-server
 
 model: host-passthrough
 
-kubectl patch setting.longhorn.io node-down-pod-deletion-policy -n longhorn-system --type merge -p '{"value":"delete-pod-and-volume-attachment-immediately"}'
+kubectl patch setting.longhorn.io node-down-pod-deletion-policy -n longhorn-system --type merge -p '{"value":"delete-both-statefulset-and-deployment-pod"}'
 
 kubectl get setting.longhorn.io node-down-pod-deletion-policy -n longhorn-system
 
