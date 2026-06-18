@@ -18,6 +18,14 @@ instance-label on the badcompany machine, bad: company
 
 virtual machine sceduling all namespaces, Topology Key: kubernetes.io/hostname and Anti-affinity label bad: company
 
+kubectl get events -n kube-system --sort-by='.metadata.creationTimestamp' -w
+
+kubectl describe vm badcompany -n default
+
+kubectl get pods -n kube-system | grep descheduler
+
+kubectl logs -n kube-system <DESCHEDULER_POD_NAME> -f
+
 helm repo add kubernetes-sigs https://kubernetes-sigs.github.io/descheduler/
 
 helm repo update
