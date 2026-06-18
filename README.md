@@ -5,28 +5,11 @@ systemctl stop rke2-server
 systemctl start rke2-server 
 
 model: host-passthrough
-evictionStrategy: None
-terminationGracePeriodSeconds: 10
 
-instance-label on the badcompany machine, bad: company
-
-virtual machine sceduling all namespaces, Topology Key: kubernetes.io/hostname and Anti-affinity label bad: company
-
-kubectl get virtualmachineinstancemigrations -n default -o custom-columns=NAME:.metadata.name,STATUS:.status.phase,AGE:.metadata.creationTimestamp
-
-kubectl describe virtualmachineinstancemigration migration-name -n default | sed -n '/Events:/,$p'
-
-ip address show mgmt-br
+kubectl edit kubevirts.kubevirt.io kubevirt -n harvester-system
 
 spec:
-  template:
-    spec:
-      tolerations:
-      - key: "node.kubernetes.io/unreachable"
-        operator: "Exists"
-        effect: "NoExecute"
-        tolerationSeconds: 10
-      - key: "node.kubernetes.io/not-ready"
-        operator: "Exists"
-        effect: "NoExecute"
-        tolerationSeconds: 10
+  configuration:
+    cpuModel: "host-passthrough"
+
+ip address show mgmt-br
