@@ -19,3 +19,5 @@ instance-label on the badcompany machine, bad: company
 virtual machine sceduling all namespaces, Topology Key: kubernetes.io/hostname and Anti-affinity label bad: company
 
 kubectl -n harvester-system get upgrades.harvesterhci.io -l harvesterhci.io/latestUpgrade=true -o yaml
+
+kubectl get clusters.provisioning.cattle.io local -n fleet-local -o yaml
