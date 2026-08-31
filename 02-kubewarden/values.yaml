@@ -2,8 +2,7 @@
 
 # Enables Prometheus metrics collection for policy evaluations
 telemetry:
-  metrics:
-    enabled: true
+  metrics: true
 
 # Configures the controller to register policy reports with Rancher Prime UI
 global:
