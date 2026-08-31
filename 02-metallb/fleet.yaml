@@ -2,8 +2,9 @@ targetCustomizations:
   - name: dynamic-downstream-targets
     clusterSelector:
       matchLabels:
-        environment: downstream-target
-
+        environment: eic-target
+dependsOn:
+  - name: eic-target-01-namespaces
 helm:
   repo: https://metallb.github.io/metallb
   chart: metallb
@@ -18,4 +19,4 @@ options:
   forceSync: false
   disableReadyCheck: false
 diff:
-  skip: true
+  skip: false
