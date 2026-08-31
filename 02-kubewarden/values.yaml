@@ -1,0 +1,14 @@
+# 02-kubewarden/values.yaml
+
+# Enables Prometheus metrics collection for policy evaluations
+telemetry:
+  metrics:
+    enabled: true
+
+# Configures the controller to register policy reports with Rancher Prime UI
+global:
+  cattle:
+    systemDefaultRegistry: ""
+
+# Default policy evaluation mode (protects cluster without blocking if set to monitor)
+mode: monitor

@@ -1,0 +1,21 @@
+defaultNamespace: kubewarden
+
+targetCustomizations:
+  - name: dynamic-downstream-targets
+    clusterSelector:
+      matchLabels:
+        environment: eic-target
+
+# Ensures namespaces are created first
+dependsOn:
+  - name: eic-target-01-namespaces
+
+helm:
+  # Uses Rancher/Kubewarden upstream chart repository
+  repo: https://charts.kubewarden.io
+  chart: kubewarden-controller
+  releaseName: kubewarden-controller
+  namespace: kubewarden
+  valuesFiles:
+    - values.yaml
+  waitForData: true

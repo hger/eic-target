@@ -1,0 +1,15 @@
+apiVersion: policies.kubewarden.io/v1
+kind: ClusterAdmissionPolicy
+metadata:
+  name: disallow-root-user
+spec:
+  module: registry://ghcr.io/kubewarden/policies/user-group-psp:v0.1.6
+  rules:
+    - apiGroups: [""]
+      apiVersions: ["v1"]
+      resources: ["pods"]
+      operations: ["CREATE"]
+  mutating: false
+  settings:
+    run_as_user:
+      rule: MustRunAsNonRoot

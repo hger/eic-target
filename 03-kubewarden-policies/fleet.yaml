@@ -1,0 +1,11 @@
+defaultNamespace: kubewarden
+
+targetCustomizations:
+  - name: dynamic-downstream-targets
+    clusterSelector:
+      matchLabels:
+        environment: eic-target
+
+# Ensures Kubewarden CRDs and Controller are fully ready before applying policies
+dependsOn:
+  - name: eic-target-02-kubewarden
