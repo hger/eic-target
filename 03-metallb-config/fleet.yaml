@@ -1,0 +1,10 @@
+defaultNamespace: metallb-system
+
+targetCustomizations:
+  - name: dynamic-downstream-targets
+    clusterSelector:
+      matchLabels:
+        environment: eic-target
+
+dependsOn:
+  - name: eic-target-02-metallb
