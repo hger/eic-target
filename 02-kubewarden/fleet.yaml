@@ -11,8 +11,8 @@ dependsOn:
 
 helm:
   # OCI repository path including the chart name in the URL
-  repo: oci://dp.apps.rancher.io/charts/suse-security-admission-controller
-  chart: suse-security-admission-controller
+  chart: oci://dp.apps.rancher.io/charts/suse-security-admission-controller
+  version: 1.0.2
   releaseName: suse-security-admission-controller
   namespace: cattle-kubewarden-system
   secretName: application-collection
