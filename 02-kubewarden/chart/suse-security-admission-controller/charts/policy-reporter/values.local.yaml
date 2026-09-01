@@ -1,8 +1,0 @@
-global:
-  imagePullSecrets:
-    - application-collection
-
-ui:
-  enabled: true
-  service:
-    type: NodePort
