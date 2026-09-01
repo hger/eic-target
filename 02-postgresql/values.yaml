@@ -1,0 +1,26 @@
+# 02-postgresql/values.yaml
+
+# Database authentication setup
+auth:
+  postgresPassword: "mysecretpassword"
+  username: "app_user"
+  password: "mysecretpassword"
+  database: "app_db"
+
+# Deployment architecture: standalone (primary only) or replication
+architecture: standalone
+
+# Persistence configuration
+primary:
+  persistence:
+    enabled: true
+    size: 10Gi
+
+  # Resource allocations
+  resources:
+    requests:
+      cpu: 250m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
