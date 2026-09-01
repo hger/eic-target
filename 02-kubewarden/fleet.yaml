@@ -10,8 +10,8 @@ dependsOn:
   - name: eic-target-01-namespaces
 
 helm:
-  # OCI repository path including the chart name in the URL
-  chart: oci://dp.apps.rancher.io/charts/suse-security-admission-controller
+  repo: https://dp.apps.rancher.io/charts
+  chart: suse-security-admission-controller
   version: 1.0.2
   releaseName: suse-security-admission-controller
   namespace: cattle-kubewarden-system
