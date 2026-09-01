@@ -1,0 +1,33 @@
+annotations:
+  helm.sh/images: |
+    - image: dp.apps.rancher.io/containers/kubectl:1.36.3-5.9
+      name: kubectl
+    - image: dp.apps.rancher.io/containers/kubewarden-audit-scanner:1.37.2-12.6
+      name: kubewarden-audit-scanner
+    - image: dp.apps.rancher.io/containers/kubewarden-controller:1.37.2-12.6
+      name: kubewarden-controller
+    - image: dp.apps.rancher.io/containers/kubewarden-policy-server:1.37.2-12.6
+      name: kubewarden-policy-server
+  license: Apache-2.0
+apiVersion: v2
+appVersion: 1.37.2
+dependencies:
+- condition: installOpenReportsCRDs
+  name: openreports
+  repository: ""
+  version: 0.2.1
+- condition: auditScanner.policyReporter
+  name: policy-reporter
+  repository: oci://dp.apps.rancher.io/charts
+  version: 3.9.1
+description: SUSE Security Admission Controller is the Universal Policy Engine for
+  Kubernetes, designed to enable consistent security and compliance enforcement across
+  all your clusters. It simplifies policy management and helps maintain a uniform
+  security posture in multi-cluster environments.
+home: https://apps.rancher.io/applications/suse-security-admission-controller
+icon: https://apps.rancher.io/logos/suse-security-admission-controller.png
+maintainers:
+- name: SUSE LLC
+  url: https://www.suse.com/
+name: suse-security-admission-controller
+version: 1.0.2

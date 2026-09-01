@@ -1,0 +1,13 @@
+global:
+  imagePullSecrets:
+    - application-collection
+
+auditScanner:
+  policyReporter: true
+policy-reporter:
+  ui:
+    service:
+      type: NodePort
+
+recommendedPolicies:
+  enabled: true
