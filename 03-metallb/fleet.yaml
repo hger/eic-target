@@ -18,7 +18,7 @@ helm:
   namespace: metallb-system
   valuesFiles:
     - values.yaml
-  waitForData: true
+  waitForData: false
 
 takeOwnership: true
 
