@@ -18,7 +18,3 @@ helm:
   valuesFiles:
     - values.yaml
   waitForData: true
-
-options:
-  install:
-    createNamespace: false

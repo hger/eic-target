@@ -20,10 +20,6 @@ helm:
     - values.yaml
   waitForData: true
 
-options:
-  install:
-    createNamespace: false
-
 takeOwnership: true
 
 diff:
