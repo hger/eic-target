@@ -1,14 +1,12 @@
 # 02-kubewarden/values.yaml
 
-# Disable telemetry metrics collector if OpenTelemetry operator is not in the cluster
+kubewarden-controller:
+  enabled: true
+
+# 2. Enable default PolicyServer creation
+defaults:
+  enabled: true
+
+# 3. Disable telemetry collector if OpenTelemetry Operator is not installed
 telemetry:
   metrics: false
-
-# 02-kubewarden/values.yaml
-global:
-  cattle:
-    systemDefaultRegistry: "dp.apps.rancher.io"
-
-# Passes the imagePullSecret to pods spawned by the controller
-imagePullSecrets:
-  - name: application-collection
