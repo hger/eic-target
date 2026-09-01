@@ -4,9 +4,7 @@ controller:
     tag: "latest"
 
 speaker:
-  enabled: true
-  image:
-    tag: "latest"
+  enabled: false
 
 crds:
   enabled: true
