@@ -1,4 +1,4 @@
-defaultNamespace: kubewarden
+defaultNamespace: cattle-kubewarden-system
 
 targetCustomizations:
   - name: dynamic-downstream-targets
@@ -6,16 +6,20 @@ targetCustomizations:
       matchLabels:
         environment: eic-target
 
-# Ensures namespaces are created first
 dependsOn:
   - name: eic-target-01-namespaces
 
 helm:
-  # Uses Rancher/Kubewarden upstream chart repository
-  repo: https://charts.kubewarden.io
-  chart: kubewarden-controller
-  releaseName: kubewarden-controller
-  namespace: kubewarden
+  # OCI repository path including the chart name in the URL
+  repo: oci://dp.apps.rancher.io/charts/suse-security-admission-controller
+  chart: suse-security-admission-controller
+  releaseName: suse-security-admission-controller
+  namespace: cattle-kubewarden-system
+  secretName: application-collection
   valuesFiles:
     - values.yaml
   waitForData: true
+
+options:
+  install:
+    createNamespace: false

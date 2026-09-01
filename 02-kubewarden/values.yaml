@@ -1,13 +1,14 @@
 # 02-kubewarden/values.yaml
 
-# Enables Prometheus metrics collection for policy evaluations
+# Disable telemetry metrics collector if OpenTelemetry operator is not in the cluster
 telemetry:
   metrics: false
 
-# Configures the controller to register policy reports with Rancher Prime UI
+# 02-kubewarden/values.yaml
 global:
   cattle:
-    systemDefaultRegistry: ""
+    systemDefaultRegistry: "dp.apps.rancher.io"
 
-# Default policy evaluation mode (protects cluster without blocking if set to monitor)
-mode: monitor
+# Passes the imagePullSecret to pods spawned by the controller
+imagePullSecrets:
+  - name: application-collection

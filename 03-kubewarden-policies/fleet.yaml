@@ -1,4 +1,4 @@
-defaultNamespace: kubewarden
+defaultNamespace: cattle-kubewarden-system
 
 targetCustomizations:
   - name: dynamic-downstream-targets
