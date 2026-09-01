@@ -6,12 +6,10 @@ targetCustomizations:
       matchLabels:
         environment: eic-target
 
-# Ensures folder 01 (namespaces) finishes deploying first
 dependsOn:
   - name: eic-target-01-namespaces
 
 helm:
-  # Official Bitnami public Helm repository
   repo: https://charts.bitnami.com/bitnami
   chart: postgresql
   version: 15.5.38
