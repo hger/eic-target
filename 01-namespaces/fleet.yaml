@@ -3,3 +3,17 @@ targetCustomizations:
     clusterSelector:
       matchLabels:
         environment: eic-target
+
+takeOwnership: true
+
+diff:
+  comparePatches:
+    - apiVersion: v1
+      kind: Namespace
+      operations:
+        - op: remove
+          path: /metadata/annotations
+        - op: remove
+          path: /metadata/labels
+        - op: remove
+          path: /metadata/finalizers
