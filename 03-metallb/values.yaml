@@ -1,0 +1,12 @@
+controller:
+  enabled: true
+  image:
+    tag: "latest"
+
+speaker:
+  enabled: true
+  image:
+    tag: "latest"
+
+crds:
+  enabled: true
