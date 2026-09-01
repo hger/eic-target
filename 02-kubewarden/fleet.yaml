@@ -15,8 +15,6 @@ helm:
   version: 1.0.2
   releaseName: suse-security-admission-controller
   namespace: cattle-kubewarden-system
-  auth:
-    secretName:: application-collection-auth
   valuesFiles:
     - values.yaml
   waitForData: true
