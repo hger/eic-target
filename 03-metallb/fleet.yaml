@@ -1,0 +1,25 @@
+defaultNamespace: metallb-system
+
+targetCustomizations:
+  - name: dynamic-downstream-targets
+    clusterSelector:
+      matchLabels:
+        environment: eic-target
+
+dependsOn:
+  - name: eic-target-01-namespaces
+  - name: eic-target-02-postgresql
+
+helm:
+  repo: https://metallb.github.io/metallb
+  chart: metallb
+  version: 0.14.8
+  releaseName: metallb
+  namespace: metallb-system
+  valuesFiles:
+    - values.yaml
+  waitForData: true
+
+options:
+  install:
+    createNamespace: false
